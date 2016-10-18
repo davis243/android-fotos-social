@@ -49,8 +49,13 @@ public class PhotoListRepositoryImpl implements PhotoListRepository {
                 photo.setId(dataSnapshot.getKey());
 
                 String email = firebase.getAuthEmail();
-
-                boolean publishedByMy = photo.getEmail().equals(email);
+                if(email==null)
+                    email="";
+                boolean publishedByMy = false;
+                if(photo.getEmail()==null)
+                    publishedByMy =false;
+                else
+                    publishedByMy = photo.getEmail().equals(email);
                 photo.setPublishedByMe(publishedByMy);
                 post(PhotoListEvent.READ_EVENT, photo);
             }

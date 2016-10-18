@@ -129,9 +129,9 @@ public class PhotoMapFragment extends Fragment implements PhotoMapView, OnMapRea
     public void addPhoto(Photo photo) {
         LatLng location = new LatLng(photo.getLatitutde(), photo.getLongitude());
 
-        Marker marker = map.addMarker(new MarkerOptions().position(location));
+      /*  Marker marker = map.addMarker(new MarkerOptions().position(location));
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 6));
-        markers.put(marker, photo);
+        markers.put(marker, photo);*/
 
     }
 

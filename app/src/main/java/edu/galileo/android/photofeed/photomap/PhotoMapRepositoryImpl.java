@@ -32,8 +32,12 @@ public class PhotoMapRepositoryImpl implements PhotoMapRepository {
                 photo.setId(dataSnapshot.getKey());
 
                 String email = firebase.getAuthEmail();
+                boolean publishedByMy = false;
+                if(photo.getEmail()==null)
+                    publishedByMy =false;
+                else
+                    publishedByMy = photo.getEmail().equals(email);
 
-                boolean publishedByMy = photo.getEmail().equals(email);
                 photo.setPublishedByMe(publishedByMy);
                 post(PhotoMapEvent.READ_EVENT, photo);
             }

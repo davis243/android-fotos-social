@@ -38,9 +38,11 @@ public class Util {
         return result;
     }
 
-    private String md5(final String s) {
+    private String md5( String s) {
         final String MD5 = "MD5";
         try {
+            if(s==null)
+                s="";
             // Create MD5 Hash
             MessageDigest digest = java.security.MessageDigest
                     .getInstance(MD5);
