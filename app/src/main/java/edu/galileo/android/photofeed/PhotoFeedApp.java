@@ -4,7 +4,8 @@ import android.app.Application;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.firebase.client.Firebase;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 import edu.galileo.android.photofeed.domain.di.DomainModule;
 import edu.galileo.android.photofeed.lib.di.LibsModule;
@@ -49,7 +50,9 @@ public class PhotoFeedApp extends Application {
     }
 
     private void initFirebase() {
-        Firebase.setAndroidContext(this);
+        /*Firebase.setAndroidContext(this);*/
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
     }
 
     public static String getEmailKey() {

@@ -1,7 +1,9 @@
 package edu.galileo.android.photofeed.photomap;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.FirebaseError;
+
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 
 import edu.galileo.android.photofeed.domain.FirebaseAPI;
 import edu.galileo.android.photofeed.domain.FirebaseEventListenerCallback;
@@ -45,7 +47,7 @@ public class PhotoMapRepositoryImpl implements PhotoMapRepository {
             }
 
             @Override
-            public void onCancelled(FirebaseError error) {
+            public void onCancelled(DatabaseError error) {
                 post(error.getMessage());
             }
         });

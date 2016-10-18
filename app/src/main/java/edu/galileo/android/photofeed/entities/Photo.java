@@ -1,14 +1,15 @@
 package edu.galileo.android.photofeed.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.google.firebase.database.Exclude;
 
 /**
  * Created by ykro.
  */
 public class Photo {
-    @JsonIgnore
+    @Exclude
     private String id;
-    @JsonIgnore
+    @Exclude
     private boolean publishedByMe;
 
     private String url;

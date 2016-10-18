@@ -7,6 +7,12 @@ import edu.galileo.android.photofeed.lib.base.EventBus;
  */
 public class GreenRobotEventBus implements EventBus {
     org.greenrobot.eventbus.EventBus eventBus;
+    private static class SingletonHolder {
+        private static final GreenRobotEventBus INSTANCE = new GreenRobotEventBus();
+    }
+    public static GreenRobotEventBus getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
 
     public GreenRobotEventBus(){
         eventBus = org.greenrobot.eventbus.EventBus.getDefault();

@@ -1,7 +1,10 @@
 package edu.galileo.android.photofeed.photolist;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.FirebaseError;
+
+
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 
 import edu.galileo.android.photofeed.domain.FirebaseAPI;
 import edu.galileo.android.photofeed.domain.FirebaseActionListenerCallback;
@@ -30,7 +33,7 @@ public class PhotoListRepositoryImpl implements PhotoListRepository {
             }
 
             @Override
-            public void onError(FirebaseError error) {
+            public void onError(DatabaseError error) {
                 if (error != null) {
                     post(PhotoListEvent.READ_EVENT, error.getMessage());
                 } else {
@@ -61,7 +64,7 @@ public class PhotoListRepositoryImpl implements PhotoListRepository {
             }
 
             @Override
-            public void onCancelled(FirebaseError error) {
+            public void onCancelled(DatabaseError error) {
                 post(PhotoListEvent.READ_EVENT, error.getMessage());
             }
         });
@@ -81,7 +84,7 @@ public class PhotoListRepositoryImpl implements PhotoListRepository {
             }
 
             @Override
-            public void onError(FirebaseError error) {
+            public void onError(DatabaseError error) {
 
             }
         });

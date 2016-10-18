@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "661248202575",
+    "firebase_url": "https://photofeed-45e0b.firebaseio.com",
+    "project_id": "photofeed-45e0b",
+    "storage_bucket": "photofeed-45e0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661248202575:android:e14757b7f0cdffe3",
+        "android_client_info": {
+          "package_name": "edu.galileo.android.photofeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661248202575-qgeob7iqrvgskfe5nt31j7egm3kotks6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.galileo.android.photofeed",
+            "certificate_hash": "BA5264B7A86C664CFAC561DCEC57D0A0022CFB1C"
+          }
+        },
+        {
+          "client_id": "661248202575-pepgp42n4l1s0lbmcb2uqdevj6gr1nl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzvikY_uGJTc-lkJC0wwkrDroNV5NZXiA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661248202575-pepgp42n4l1s0lbmcb2uqdevj6gr1nl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

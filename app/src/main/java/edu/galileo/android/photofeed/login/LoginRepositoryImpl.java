@@ -1,6 +1,6 @@
 package edu.galileo.android.photofeed.login;
 
-import com.firebase.client.FirebaseError;
+import com.google.firebase.database.DatabaseError;
 
 import edu.galileo.android.photofeed.domain.FirebaseAPI;
 import edu.galileo.android.photofeed.domain.FirebaseActionListenerCallback;
@@ -29,16 +29,16 @@ public class LoginRepositoryImpl implements LoginRepository {
             }
 
             @Override
-            public void onError(FirebaseError error) {
+            public void onError(DatabaseError error) {
                 post(LoginEvent.onSignUpError, error.getMessage());
             }
         });
     }
 
     @Override
-    public void signIn(String email, String password) {
+    public void signIn( String email, String password) {
         if (email != null && password != null) {
-            firebase.login(email, password, new FirebaseActionListenerCallback() {
+            firebase.login(email, password/*, new FirebaseActionListenerCallback() {
                 @Override
                 public void onSuccess() {
                     String email = firebase.getAuthEmail();
@@ -46,10 +46,10 @@ public class LoginRepositoryImpl implements LoginRepository {
                 }
 
                 @Override
-                public void onError(FirebaseError error) {
+                public void onError(DatabaseError error) {
                     post(LoginEvent.onSignInError, error.getMessage());
                 }
-            });
+            }*/);
         } else {
             firebase.checkForSession(new FirebaseActionListenerCallback() {
                 @Override
@@ -59,7 +59,7 @@ public class LoginRepositoryImpl implements LoginRepository {
                 }
 
                 @Override
-                public void onError(FirebaseError error) {
+                public void onError(DatabaseError error) {
                     post(LoginEvent.onFailedToRecoverSession);
                 }
             });
