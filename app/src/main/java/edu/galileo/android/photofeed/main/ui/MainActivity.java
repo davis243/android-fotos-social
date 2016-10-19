@@ -1,8 +1,10 @@
 package edu.galileo.android.photofeed.main.ui;
 
-import android.content.Context;
+
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.location.Location;
@@ -14,7 +16,9 @@ import android.provider.MediaStore;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -40,6 +44,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import edu.galileo.android.photofeed.PhotoFeedApp;
 import edu.galileo.android.photofeed.R;
 import edu.galileo.android.photofeed.login.ui.LoginActivity;
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements MainView, GoogleA
     private Location lastLocation;
     private GoogleApiClient googleApiClient;
     private final static int REQUEST_PICTURE = 0;
+    private static final int REQUEST_WRITE_STORAGE = 112;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainView, GoogleA
         setupInjection();
         setupNavigation();
         setupGoogleAPIClient();
+        setupPermissions();
 
         presenter.onCreate();
     }
@@ -94,7 +101,16 @@ public class MainActivity extends AppCompatActivity implements MainView, GoogleA
         googleApiClient.disconnect();
         super.onStop();
     }
+    private void setupPermissions(){
 
+        boolean hasPermission = (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+        if (!hasPermission) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_WRITE_STORAGE);
+            }
+    }
     private void setupGoogleAPIClient() {
         if (googleApiClient == null) {
             googleApiClient = new GoogleApiClient.Builder(this)

@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/33139754/android-6-0-marshmallow-cannot-write-to-sd-card
+https://source.android.com/devices/storage/
