@@ -123,6 +123,7 @@ public class FirebaseAPI {
                 listener.onError(firebaseError);
             }
         });*/
+        try {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -137,6 +138,9 @@ public class FirebaseAPI {
                         postEvent(LoginEvent.onSignUpError, e.getMessage());
                     }
                 });
+        } catch (Exception e) {
+            postEvent(LoginEvent.onSignUpError, e.getMessage());
+        }
     }
 
     public void login(String email, String password/*, final FirebaseActionListenerCallback listener*/){
